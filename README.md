@@ -52,4 +52,7 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "co
 ```javascript
 docker network inspect -f '{{range .IPAM.Config}}{{.Subnet}}{{end}}'  "network_id"
 ```
-
+- Check ip address of all container in network
+```javascript
+docker network inspect -f '{{json .Containers}}' 9f6bc3c15568 | jq '.[] | .Name + ":" + .IPv4Address' "network_id"
+```
