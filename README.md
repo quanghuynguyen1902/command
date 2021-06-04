@@ -40,4 +40,16 @@ docker-compose logs -f "container_id"
 ```javascript
 docker-compose exec -it "container_id" bash
 ```
+- List network
+```javascript
+docker network ls
+```
+- Check ip address container
+```javascript
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "container_id"
+```
+- Check ip address network
+```javascript
+docker network inspect -f '{{range .IPAM.Config}}{{.Subnet}}{{end}}'  "network_id"
+```
 
